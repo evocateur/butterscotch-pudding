@@ -25,7 +25,7 @@ test('basic options munging', t => {
   t.is(opts.get('num-desc'), 3.14159, 'number defaultDescription parsed');
   t.is(opts.get('num-desc-no'), undefined, 'number defaultDescription skipped');
   t.is(opts.get('num-default'), 1, 'number default overrides description');
-  t.is(opts.get('desc-default'), 'desc', 'string defaultDescription raw');
+  t.is(opts.get('desc-default'), undefined, 'string defaultDescription not default');
   t.same(opts.get('a-list'), [], 'array type defaults to array');
   t.is(opts.get('someStuff'), 'yup', 'camel key from camelized argv');
   t.is(opts.get('some-stuff'), 'yup', 'dashed key from camelized argv');

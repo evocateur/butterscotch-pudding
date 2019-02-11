@@ -19,8 +19,6 @@ function butterscotchPudding (options) {
         obj[key].default = JSON.parse(cfg.defaultDescription);
       } else if (cfg.type === 'number' && !isNaN(cfg.defaultDescription)) {
         obj[key].default = Number(cfg.defaultDescription);
-      } else if (cfg.type === 'string') {
-        obj[key].default = cfg.defaultDescription;
       }
     } else if (cfg.type === 'array') {
       // yargs does this, but why not
