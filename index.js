@@ -15,11 +15,13 @@ function butterscotchPudding (options) {
       obj[key].default = cfg.default;
     } else if (cfg.defaultDescription && cfg.type) {
       // default descriptions _without_ type must _remain_ undefined
-      obj[key].default = cfg.type === 'boolean'
-        ? JSON.parse(cfg.defaultDescription)
-        : cfg.type === 'number'
-          ? Number(cfg.defaultDescription)
-          : cfg.defaultDescription;
+      if (cfg.type === 'boolean' && /^(true|false)$/.test(cfg.defaultDescription)) {
+        obj[key].default = JSON.parse(cfg.defaultDescription);
+      } else if (cfg.type === 'number' && !isNaN(cfg.defaultDescription)) {
+        obj[key].default = Number(cfg.defaultDescription);
+      } else if (cfg.type === 'string') {
+        obj[key].default = cfg.defaultDescription;
+      }
     } else if (cfg.type === 'array') {
       // yargs does this, but why not
       obj[key].default = [];
