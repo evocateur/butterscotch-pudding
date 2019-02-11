@@ -8,6 +8,7 @@ test('basic options munging', t => {
     'answer': { default: 42 },
     'a-list': { type: 'array' },
     'bool-desc': { type: 'boolean', defaultDescription: 'true' },
+    'bool-default': { type: 'boolean', defaultDescription: 'a boolean', default: false },
     'desc-default': { type: 'string', defaultDescription: 'desc' },
     'some-stuff': { type: 'string' }
   });
@@ -15,6 +16,7 @@ test('basic options munging', t => {
 
   t.is(opts.get('answer'), 42, 'untyped default propagated');
   t.is(opts.get('bool-desc'), true, 'boolean defaultDescription parsed');
+  t.is(opts.get('bool-default'), false, 'boolean default overrides description');
   t.is(opts.get('desc-default'), 'desc', 'string defaultDescription raw');
   t.same(opts.get('a-list'), [], 'array type defaults to array');
   t.is(opts.get('someStuff'), 'yup', 'camel key from camelized argv');

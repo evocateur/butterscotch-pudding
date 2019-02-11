@@ -10,14 +10,14 @@ function butterscotchPudding (options) {
 
     obj[key] = {};
 
-    if (cfg.defaultDescription && cfg.type) {
+    if ('default' in cfg) {
+      // propagate explicit defaults
+      obj[key].default = cfg.default;
+    } else if (cfg.defaultDescription && cfg.type) {
       // default descriptions _without_ type must _remain_ undefined
       obj[key].default = cfg.type === 'boolean'
         ? JSON.parse(cfg.defaultDescription)
         : cfg.defaultDescription;
-    } else if (cfg.default) {
-      // propagate explicit defaults
-      obj[key].default = cfg.default;
     } else if (cfg.type === 'array') {
       // yargs does this, but why not
       obj[key].default = [];
