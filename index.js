@@ -25,10 +25,7 @@ function butterscotchPudding (options) {
 
     if (key.indexOf('-') > -1) {
       // back-compat for durable camelOptions
-      const ref = camelize(key);
-
-      obj[ref] = obj[key];
-      obj[key] = ref;
+      obj[camelize(key)] = key;
     }
 
     return obj;
