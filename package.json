@@ -1,6 +1,6 @@
 {
   "name": "butterscotch-pudding",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Create figgy-pudding instances from yargs options",
   "main": "index.js",
   "files": [
