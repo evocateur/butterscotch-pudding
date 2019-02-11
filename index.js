@@ -17,7 +17,9 @@ function butterscotchPudding (options) {
       // default descriptions _without_ type must _remain_ undefined
       obj[key].default = cfg.type === 'boolean'
         ? JSON.parse(cfg.defaultDescription)
-        : cfg.defaultDescription;
+        : cfg.type === 'number'
+          ? Number(cfg.defaultDescription)
+          : cfg.defaultDescription;
     } else if (cfg.type === 'array') {
       // yargs does this, but why not
       obj[key].default = [];
